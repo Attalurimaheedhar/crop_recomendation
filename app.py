@@ -1,12 +1,14 @@
 from flask import Flask, request, render_template
 import pickle
 import numpy as np
-
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, 'crop_recommendation_model.pkl')
 app = Flask(__name__)
 
 def load_model():
     """Loads the trained ML model."""
-    with open('C:\\Users\\mathe\\OneDrive\\Desktop\\minor_project\\crop_recommendation_model.pkl', 'rb') as file:
+    with open(MODEL_PATH, 'rb') as file:
         return pickle.load(file)
 
 model = load_model()
@@ -46,4 +48,4 @@ def predict():
         return render_template('recomend.html', prediction_text=f"Error: {str(e)}")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=5000,debug=True)
