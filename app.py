@@ -31,9 +31,9 @@ def predict():
 
         # Validate input ranges (optional, adjust as needed)
         if not (0 <= nitrogen <= 200 and 0 <= phosphorus <= 200 and 
-                0 <= potassium <= 200 and 0 <= temperature <= 100 and 
+                0 <= potassium <= 200 and 0 <= temperature <= 70 and 
                 0 <= humidity <= 100 and 0 <= ph <= 14 and 
-                0 <= rainfall <= 2000):
+                0 <= rainfall <= 4000):
             return render_template('recomend.html', prediction_text="Invalid input values.")
 
         # Prepare data for prediction
